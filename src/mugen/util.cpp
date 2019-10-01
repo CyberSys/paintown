@@ -1531,6 +1531,7 @@ const Mugen::FontSystem::Font Mugen::FontSystem::getFont(int index, int bank, in
     return FontSystem::Font();
 }
 
+#if defined(__GLIBC__) 
 void Mugen::NetworkUtil::sendMessage(std::string message, ::Network::Socket socket){
     int size = message.size()+1 + sizeof(uint16_t);
     char * buffer = new char[size];
@@ -1553,3 +1554,4 @@ std::string Mugen::NetworkUtil::readMessage(::Network::Socket socket){
 
     return message;
 }
+#endif
